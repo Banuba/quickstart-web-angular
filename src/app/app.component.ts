@@ -1,32 +1,26 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
 import { BANUBA_CLIENT_TOKEN } from "./BanubaClientToken"
+import { Webcam, Player, Module, Effect, Dom } from "@banuba/webar";
 
-// import { BANUBA_CLIENT_TOKEN } from "./BanubaClientToken"
-import { Webcam, Player, Module, Effect, Dom } from "@banuba/webar"
-
-import wasm from "@banuba/webar/BanubaSDK.wasm?url"
-import simd from "@banuba/webar/BanubaSDK.simd.wasm?url"
-import data from "@banuba/webar/BanubaSDK.data?url"
+import wasm from "@banuba/webar/BanubaSDK.wasm";
+import simd from "@banuba/webar/BanubaSDK.simd.wasm";
+import data from "@banuba/webar/BanubaSDK.data";
 
 // Find more about available modules:
 // https://docs.banuba.com/face-ar-sdk-v1/generated/typedoc/classes/Module.html
-import FaceTracker from "@banuba/webar/face_tracker.zip?url"
+import FaceTracker from "@banuba/webar/face_tracker.zip";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  selector: 'app',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'quickstart';
 
-  private webcam: Webcam
-  private player: Promise<Player>
+  private webcam: Webcam;
+  private player: Promise<Player>;
 
   constructor() {
     this.webcam = new Webcam();
@@ -50,15 +44,15 @@ export class AppComponent {
   ngOnInit() {
     this.player.then((player) => 
       player.addModule(new Module(FaceTracker)).then(() => {
-        player.use(this.webcam)
-        player.applyEffect(new Effect("assets/effects/glasses_Banuba.zip"))
-        Dom.render(player, "#webar")
+        player.use(this.webcam);
+        player.applyEffect(new Effect("assets/effects/glasses_Banuba.zip"));
+        Dom.render(player, "#webar");
       })
     )
   }
 
   ngOnDestroy() {
-    this.webcam.stop()
-    Dom.unmount("#webar")
+    this.webcam.stop();
+    Dom.unmount("#webar");
   }
 }
