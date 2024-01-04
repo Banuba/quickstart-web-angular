@@ -1,31 +1,22 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "strict": true,
-    "useDefineForClassFields": true,
-    "isolatedModules": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "paths": {
-      "@banuba/webar": ["node_modules/@banuba/webar"]
+    "compilerOptions": {
+      "target": "es2022",
+      "module": "es2022",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "lib": [ "es2022", "dom" ],
+      "noImplicitAny": true,
+      "typeRoots": [
+        "node_modules/@types/"
+      ],
+      "baseUrl": ".", 
+      "paths": {
+        "wasm": ["@banuba/webar/BanubaSDK.wasm"]
+      }
     },
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "exclude": [
+        "node_modules"
+    ]
   }
-}

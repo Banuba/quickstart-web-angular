@@ -11,10 +11,12 @@ import data from "@banuba/webar/BanubaSDK.data";
 // https://docs.banuba.com/face-ar-sdk-v1/generated/typedoc/classes/Module.html
 import FaceTracker from "@banuba/webar/face_tracker.zip";
 
+//@ts-ignore
+import GlassesBanubaEffect from "./glasses_Banuba.zip"
+
 @Component({
-  selector: 'app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'quickstart';
@@ -45,7 +47,7 @@ export class AppComponent {
     this.player.then((player) => 
       player.addModule(new Module(FaceTracker)).then(() => {
         player.use(this.webcam);
-        player.applyEffect(new Effect("assets/effects/glasses_Banuba.zip"));
+        player.applyEffect(new Effect(GlassesBanubaEffect));
         Dom.render(player, "#webar");
       })
     )
