@@ -49,7 +49,7 @@ You will also see any lint errors in the console.
 
 ## Learn More
 
-To learn Angular, check out the [React documentation](https://angular.io/docs).
+To learn Angular, check out the [Angular documentation](https://angular.io/docs).
 
 To learn Banuba SDK Web AR, check out the [Banuba Web AR SDK documentation](https://docs.banuba.com/face-ar-sdk/web/web_overview).
 
